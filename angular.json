@@ -199,7 +199,105 @@
           }
         }
       }
+    },
+    "assignment-01-practicing-components": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/assignment-01-practicing-components",
+      "sourceRoot": "projects/assignment-01-practicing-components/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/assignment-01-practicing-components",
+            "index": "projects/assignment-01-practicing-components/src/index.html",
+            "main": "projects/assignment-01-practicing-components/src/main.ts",
+            "polyfills": "projects/assignment-01-practicing-components/src/polyfills.ts",
+            "tsConfig": "projects/assignment-01-practicing-components/tsconfig.app.json",
+            "assets": [
+              "projects/assignment-01-practicing-components/src/favicon.ico",
+              "projects/assignment-01-practicing-components/src/assets"
+            ],
+            "styles": [
+              "projects/assignment-01-practicing-components/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/assignment-01-practicing-components/src/environments/environment.ts",
+                  "with": "projects/assignment-01-practicing-components/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "assignment-01-practicing-components:build:production"
+            },
+            "development": {
+              "browserTarget": "assignment-01-practicing-components:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "assignment-01-practicing-components:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/assignment-01-practicing-components/src/test.ts",
+            "polyfills": "projects/assignment-01-practicing-components/src/polyfills.ts",
+            "tsConfig": "projects/assignment-01-practicing-components/tsconfig.spec.json",
+            "karmaConfig": "projects/assignment-01-practicing-components/karma.conf.js",
+            "assets": [
+              "projects/assignment-01-practicing-components/src/favicon.ico",
+              "projects/assignment-01-practicing-components/src/assets"
+            ],
+            "styles": [
+              "projects/assignment-01-practicing-components/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
-  "defaultProject": "section-01-getting-started"
+  "defaultProject": "assignment-01-practicing-components"
 }
