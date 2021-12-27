@@ -27,6 +27,7 @@
               "projects/section-01-getting-started/src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
               "projects/section-01-getting-started/src/styles.css"
             ],
             "scripts": []
