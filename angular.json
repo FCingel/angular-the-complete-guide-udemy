@@ -27,7 +27,7 @@
               "projects/section-01-getting-started/src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap-theme.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/section-01-getting-started/src/styles.css"
             ],
             "scripts": []
@@ -126,6 +126,7 @@
               "projects/section-02-the-basics/src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/section-02-the-basics/src/styles.css"
             ],
             "scripts": []
@@ -224,6 +225,7 @@
               "projects/assignment-01-practicing-components/src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/assignment-01-practicing-components/src/styles.css"
             ],
             "scripts": []
