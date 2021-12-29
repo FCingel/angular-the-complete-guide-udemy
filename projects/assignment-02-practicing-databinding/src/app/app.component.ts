@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  username = '';
+  buttonDisabled = true;
+
+  checkIfInputEmpty() {
+    this.buttonDisabled = this.username.length == 0;
+  }
+
+  clearUsername() {
+    this.username = '';
+    this.checkIfInputEmpty();
+  }
+}
