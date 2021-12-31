@@ -7,16 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   displayPara = true;
-  numClicks: number[] = [];
-  increment = 1;
+  // numClicks: number[] = [];
+  numClicks: Date[] = [];
+  // increment = 1;
 
   togglePara() {
     this.displayPara = !this.displayPara;
-    this.numClicks.push(this.increment);
-    this.increment++;
+    // this.numClicks.push(this.increment);
+    // this.increment++;
+    this.numClicks.push(new Date);
   }
 
   setBackground(num: number) {
-    return num >= 5 ? 'darkblue' : 'transparent';
+    // return num >= 5 ? 'darkblue' : 'transparent';
+    return num >= 4 ? 'darkblue' : 'transparent';
   }
 }

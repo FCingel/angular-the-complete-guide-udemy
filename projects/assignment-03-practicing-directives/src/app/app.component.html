@@ -11,10 +11,16 @@
 
       <button class="btn btn-success" (click)="togglePara()">Display Details</button>
       <p *ngIf="displayPara">Don't delete me!</p>
-      <p 
+      <!-- <p 
         *ngFor="let num of numClicks" 
         [ngStyle]="{backgroundColor: setBackground(num)}" 
         [ngClass]="{'white-para': num >= 5}">
+        {{ num }}
+      </p> -->
+      <p 
+        *ngFor="let num of numClicks; let i = index" 
+        [ngStyle]="{backgroundColor: setBackground(i)}" 
+        [ngClass]="{'white-para': i >= 4}">
         {{ num }}
       </p>
     </div>
