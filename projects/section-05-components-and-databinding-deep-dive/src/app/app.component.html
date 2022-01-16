@@ -13,7 +13,7 @@
         [srvElement]="serverElement"
         [name]="serverElement.name">
         <!-- Content between component tags that ng-content in server-element.component.html makes display -->
-        <p>
+        <p #contentParagraph>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
         </p>

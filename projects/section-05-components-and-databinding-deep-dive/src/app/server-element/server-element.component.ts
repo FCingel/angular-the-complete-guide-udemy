@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -12,6 +12,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   @Input('srvElement') element: {type: string, name: string, content: string};      // not used anymore. Kept for example
   @Input() name: string;
   @ViewChild('heading', {static: true }) header: ElementRef;
+  @ContentChild('contentParagraph', {static: true }) paragraph: ElementRef;
 
   constructor() {
     console.log('constructor called!');
@@ -25,6 +26,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   ngOnInit(): void {
     console.log('ngOnInit called!');
     console.log('Text Content: ', this.header.nativeElement.textContent);       // will be empty since ngAfterViewInit has not run so it is not rendered to the DOM yet
+    console.log('Text Content of ContentChild paragraph: ', this.paragraph.nativeElement.textContent);        // will be empty since ngAfterContentInit has not run yet
   }
 
   // Called an extra time in development module. See in console
@@ -34,6 +36,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
 
   ngAfterContentInit() {
     console.log('ngAfterContentInit called!');
+    console.log('Text Content of ContentChild paragraph: ', this.paragraph.nativeElement.textContent);       // will now be populated with a value
   }
 
   ngAfterContentChecked() {
