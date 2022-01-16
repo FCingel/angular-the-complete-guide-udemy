@@ -976,7 +976,102 @@
           }
         }
       }
+    },
+    "section-06-course-project-components-and-databinding": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/section-06-course-project-components-and-databinding",
+      "sourceRoot": "projects/section-06-course-project-components-and-databinding/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/section-06-course-project-components-and-databinding",
+            "index": "projects/section-06-course-project-components-and-databinding/src/index.html",
+            "main": "projects/section-06-course-project-components-and-databinding/src/main.ts",
+            "polyfills": "projects/section-06-course-project-components-and-databinding/src/polyfills.ts",
+            "tsConfig": "projects/section-06-course-project-components-and-databinding/tsconfig.app.json",
+            "assets": [
+              "projects/section-06-course-project-components-and-databinding/src/favicon.ico",
+              "projects/section-06-course-project-components-and-databinding/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/section-06-course-project-components-and-databinding/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/section-06-course-project-components-and-databinding/src/environments/environment.ts",
+                  "with": "projects/section-06-course-project-components-and-databinding/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "section-06-course-project-components-and-databinding:build:production"
+            },
+            "development": {
+              "browserTarget": "section-06-course-project-components-and-databinding:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "section-06-course-project-components-and-databinding:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/section-06-course-project-components-and-databinding/src/test.ts",
+            "polyfills": "projects/section-06-course-project-components-and-databinding/src/polyfills.ts",
+            "tsConfig": "projects/section-06-course-project-components-and-databinding/tsconfig.spec.json",
+            "karmaConfig": "projects/section-06-course-project-components-and-databinding/karma.conf.js",
+            "assets": [
+              "projects/section-06-course-project-components-and-databinding/src/favicon.ico",
+              "projects/section-06-course-project-components-and-databinding/src/assets"
+            ],
+            "styles": [
+              "projects/section-06-course-project-components-and-databinding/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
-  "defaultProject": "course-project-recipe-book-with-shopping-list"
+  "defaultProject": "section-06-course-project-components-and-databinding"
 }
