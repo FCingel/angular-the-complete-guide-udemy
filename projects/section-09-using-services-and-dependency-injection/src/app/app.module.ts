@@ -19,7 +19,7 @@ import { LoggingService } from './logging.service';
     BrowserModule,
     FormsModule,
   ],
-  providers: [AccountsService, LoggingService],     // Everything in our app receives the same instance of AccountsService & LoggingService (unless overridden)
+  providers: [LoggingService],     // Everything in our app receives the same instance of AccountsService & LoggingService (unless overridden)
   bootstrap: [AppComponent]
 })
 export class AppModule { }
