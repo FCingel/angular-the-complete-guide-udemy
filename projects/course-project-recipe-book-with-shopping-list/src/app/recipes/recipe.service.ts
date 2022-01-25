@@ -1,12 +1,32 @@
 import { EventEmitter } from "@angular/core";
+import { Ingredient } from "../shared/ingredient.model";
 import { Recipe } from "./recipe.model";
 
 export class RecipeService {
     recipeSelected = new EventEmitter<Recipe>();
 
     private recipes: Recipe[] = [
-        new Recipe('A Test Recipe', 'This is simply a test', 'https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png'),
-        new Recipe('Another Test Recipe', 'This is simply a test', 'https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_960_720.png')
+        new Recipe(
+            'Lomo Saltado',
+            'A traditional Peruvian stir-fry dish!',
+            'https://live.staticflickr.com/4077/4895468630_f28983b33c_b.jpg',
+            [
+                new Ingredient('Sirloin steak', 1),
+                new Ingredient('Onion', 1),
+                new Ingredient('Tomato', 1),
+                new Ingredient('French Fries', 15)
+            ]
+        ),
+        new Recipe(
+            'Kapustnica',
+            'A delicious Slovakian sauerkraut soup!',
+            'https://live.staticflickr.com/2370/2180545646_75f1efe928_b.jpg',
+            [
+                new Ingredient('Sauerkraut', 1),
+                new Ingredient('Mushroom', 6),
+                new Ingredient('Sausage', 3),
+            ]
+        )
       ];
 
       getRecipes() {
