@@ -21,6 +21,6 @@ export class ServersComponent implements OnInit {
 
   onReload() {
     // causes an error in the console since servers/servers does not match any routes
-    this.router.navigate(['servers'], {relativeTo: this.route});      // navigate() does not know what component we are in so we need to send it in the 2nd parameter
+    // this.router.navigate(['servers'], {relativeTo: this.route});      // navigate() does not know what component we are in so we need to send it in the 2nd parameter
   }
 }
