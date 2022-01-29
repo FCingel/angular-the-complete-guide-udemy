@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -17,5 +17,12 @@ export class UserComponent implements OnInit {
       id: this.route.snapshot.params['id'],
       name: this.route.snapshot.params['name']
     };
+
+    this.route.params.subscribe(      // params is an Observable and can take 3 functions that may be passed as arguments
+      (params: Params) => {           // 1st argument is fired when new data is sent through this observable (ex: route params changed)
+        this.user.id = params['id'];
+        this.user.name = params['name'];
+      }
+    );
   }
 }
