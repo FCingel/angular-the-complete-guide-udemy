@@ -14,9 +14,14 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, children: [     // nested routes
         { path: ':id/:name', component: UserComponent },
     ] },
-    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [           // servers and its children only accessible if AuthGuard's canActivate method returns true
-        { path: ':id', component: ServerComponent },
-        { path: ':id/edit', component: EditServerComponent },
+    { 
+        path: 'servers',
+        // canActivate: [AuthGuard],           // servers and its children only accessible if AuthGuard's canActivate method returns true
+        canActivateChild: [AuthGuard],          // servers is accessible but children only accessible if AuthGuard's canActivateChild method returns true
+        component: ServersComponent,
+        children: [
+            { path: ':id', component: ServerComponent },
+            { path: ':id/edit', component: EditServerComponent },
     ] },
     { path: 'not-found', component: PageNotFoundComponent },
     { path: '**', redirectTo: '/not-found' }                   // ** is the wildcard route. This catches all routes you do not know. Must be last in list since routes are parsed from top to bottom.
