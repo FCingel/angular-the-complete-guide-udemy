@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./auth-guard.service";
 import { HomeComponent } from "./home/home.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { CanDeactivateGuard } from "./servers/edit-server/can-deactivate.guard.service";
 import { EditServerComponent } from "./servers/edit-server/edit-server.component";
 import { ServerComponent } from "./servers/server/server.component";
 import { ServersComponent } from "./servers/servers.component";
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
         component: ServersComponent,
         children: [
             { path: ':id', component: ServerComponent },
-            { path: ':id/edit', component: EditServerComponent },
+            { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
     ] },
     { path: 'not-found', component: PageNotFoundComponent },
     { path: '**', redirectTo: '/not-found' }                   // ** is the wildcard route. This catches all routes you do not know. Must be last in list since routes are parsed from top to bottom.
