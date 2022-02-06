@@ -34,6 +34,9 @@ const appRoutes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes)
+
+        // only set useHash to true if you cannot get the server hosting your app to return index.html when there is a 404 error or you need to support very old browsers that can't parse these paths
+        // RouterModule.forRoot(appRoutes, {useHash: true})
     ],
     exports: [RouterModule]         // exports tells Angular, if this module was added to the imports of another module, what should be accessible to that module
 })
