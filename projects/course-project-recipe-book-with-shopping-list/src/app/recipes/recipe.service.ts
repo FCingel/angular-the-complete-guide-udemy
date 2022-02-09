@@ -33,6 +33,10 @@ export class RecipeService {
 
       constructor(private shoppingListService: ShoppingListService) { }
 
+      getRecipe(id: number) {
+          return this.recipes[id];
+      }
+
       getRecipes() {
           return this.recipes.slice();          // slice() with no arguments returns a copy of the array to prevent changing, since arrays are reference types in JS
       }
