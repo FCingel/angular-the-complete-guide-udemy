@@ -20,14 +20,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     const customIntervalObservable = new Observable(observer => {      // observer is the listener. We tell it about new data, new errors, or the observable being completed.
       let count = 0;
       setInterval(() => {
-        observer.next(count);     // observer.next() emits a new value. observer.error() is used to throw an error. observer.complete() lets observer know you are done.
+        observer.next(count);     // observer.next() emits a new value
+
+        // faking an error since setInterval won't fail
+        if (count > 3) {
+          observer.error(new Error('Count is greater than 3!'));      // whenever an observable throws an error, it stops emitting. No need to unsubscribe anymore.
+        }
         count++;
       }, 1000);
     });
 
     this.firstObsSubscription = customIntervalObservable.subscribe(data => {
       console.log(data);
-      
+    }, error => {
+      console.log(error);
+      alert(error.message);
     });
   }
 
