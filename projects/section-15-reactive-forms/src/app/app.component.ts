@@ -13,9 +13,9 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     // Form should be initialized before rendering the template
     this.signupForm = new FormGroup({
-      'username': new FormControl(null),
-      'email': new FormControl(null),
-      'gender': new FormControl('male')
+      username: new FormControl(null),
+      email: new FormControl(null),
+      gender: new FormControl('male')
     });
   }
 }
