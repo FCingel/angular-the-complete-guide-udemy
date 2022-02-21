@@ -2116,7 +2116,102 @@
           }
         }
       }
+    },
+    "section-15-reactive-forms": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/section-15-reactive-forms",
+      "sourceRoot": "projects/section-15-reactive-forms/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/section-15-reactive-forms",
+            "index": "projects/section-15-reactive-forms/src/index.html",
+            "main": "projects/section-15-reactive-forms/src/main.ts",
+            "polyfills": "projects/section-15-reactive-forms/src/polyfills.ts",
+            "tsConfig": "projects/section-15-reactive-forms/tsconfig.app.json",
+            "assets": [
+              "projects/section-15-reactive-forms/src/favicon.ico",
+              "projects/section-15-reactive-forms/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/section-15-reactive-forms/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/section-15-reactive-forms/src/environments/environment.ts",
+                  "with": "projects/section-15-reactive-forms/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "section-15-reactive-forms:build:production"
+            },
+            "development": {
+              "browserTarget": "section-15-reactive-forms:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "section-15-reactive-forms:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/section-15-reactive-forms/src/test.ts",
+            "polyfills": "projects/section-15-reactive-forms/src/polyfills.ts",
+            "tsConfig": "projects/section-15-reactive-forms/tsconfig.spec.json",
+            "karmaConfig": "projects/section-15-reactive-forms/karma.conf.js",
+            "assets": [
+              "projects/section-15-reactive-forms/src/favicon.ico",
+              "projects/section-15-reactive-forms/src/assets"
+            ],
+            "styles": [
+              "projects/section-15-reactive-forms/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
-  "defaultProject": "assignment-06-practicing-template-driven-forms"
+  "defaultProject": "section-15-reactive-forms"
 }
