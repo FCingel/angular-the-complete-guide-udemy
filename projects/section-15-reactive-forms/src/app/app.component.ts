@@ -13,8 +13,10 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     // Form should be initialized before rendering the template
     this.signupForm = new FormGroup({
-      username: new FormControl(null, Validators.required),     // don't put parenthesis () after validation method. We only pass the reference so Angular executes the method whenever the input of this FormControl changes.
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      userData: new FormGroup({
+        username: new FormControl(null, Validators.required),
+        email: new FormControl(null, [Validators.required, Validators.email]),
+      }),
       gender: new FormControl('male')
     });
   }
