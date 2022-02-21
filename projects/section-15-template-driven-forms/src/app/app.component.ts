@@ -50,11 +50,13 @@ export class AppComponent {
   // Accessing form with ViewChild is useful when you also want access before submitting
   onSubmit() {
     this.submitted = true;
-    
+
     this.user.username = this.signupForm.value.userData.username;
     this.user.email = this.signupForm.value.userData.email;
     this.user.secretQuestion = this.signupForm.value.secret;
     this.user.answer = this.signupForm.value.questionAnswer;
     this.user.gender = this.signupForm.value.gender;
+
+    this.signupForm.reset();      // empties all inputs and resets the form's state (valid, touched, etc). Can pass object like with setValue() to reset to specific values.
   }
 }
