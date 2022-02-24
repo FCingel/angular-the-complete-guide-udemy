@@ -9,12 +9,14 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class AppComponent implements OnInit{
   genders = ['male', 'female'];
   signupForm: FormGroup;
+  forbiddenUsernames = ['Chris', 'Anna'];
 
   ngOnInit(): void {
     // Form should be initialized before rendering the template
     this.signupForm = new FormGroup({
       userData: new FormGroup({
-        username: new FormControl(null, Validators.required),
+        // forbiddenUsernames validator must use bind since this class does not call it. Angular calls it when it checks validity & during that time 'this' will not refer to this class
+        username: new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
         email: new FormControl(null, [Validators.required, Validators.email]),
       }),
       gender: new FormControl('male'),
@@ -41,4 +43,13 @@ export class AppComponent implements OnInit{
   // get controls() {
   //   return (this.signupForm.get('hobbies') as FormArray).controls;
   // }
+
+
+  // Validator returns a key-value pair where the key is a string and value is a boolean
+  forbiddenNames(control: FormControl): {[s: string]: boolean} {
+    if (this.forbiddenUsernames.indexOf(control.value) !== -1) {      // indexOf returns -1 if control.value is not part of that array
+      return {'nameIsForbidden': true};     // error nameIsForbidden is true
+    }
+    return null;      // return null if valid. Do not return {'nameIsForbidden': false}.
+  }
 }
