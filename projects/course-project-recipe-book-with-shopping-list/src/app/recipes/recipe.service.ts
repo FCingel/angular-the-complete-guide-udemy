@@ -1,15 +1,18 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "../shopping-list/shopping-list.service";
 import { Recipe } from "./recipe.model";
 
 @Injectable()
 export class RecipeService {
+    recipesChanged = new Subject<Recipe[]>();
+
     private recipes: Recipe[] = [
         new Recipe(
             'Lomo Saltado',
             'A traditional Peruvian stir-fry dish!',
-            'https://live.staticflickr.com/4077/4895468630_f28983b33c_b.jpg',
+            'https://live.staticflickr.com/65535/47664244771_4808238cbc_b.jpg',
             [
                 new Ingredient('Sirloin steak', 1),
                 new Ingredient('Onion', 1),
@@ -41,5 +44,15 @@ export class RecipeService {
 
       addIngredientsToShoppingList(ingredients: Ingredient[]) {
           this.shoppingListService.addIngredients(ingredients);
+      }
+
+      addRecipe(recipe: Recipe) {
+          this.recipes.push(recipe);
+          this.recipesChanged.next(this.recipes.slice());
+      }
+
+      updateRecipe(index: number, recipe: Recipe) {
+          this.recipes[index] = recipe;
+          this.recipesChanged.next(this.recipes.slice());
       }
 }
